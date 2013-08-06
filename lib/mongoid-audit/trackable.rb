@@ -187,7 +187,7 @@ module Mongoid::Audit
         @history_tracker_attributes = {
           :association_chain  => traverse_association_chain,
           :scope              => history_trackable_options[:scope],
-          :modifier           => send("#{history_trackable_options[:modifier_field].to_s}_id_changed?".to_sym) ? send(history_trackable_options[:modifier_field]) : nil,
+          :modifier           =>  send(history_trackable_options[:modifier_field]),
         }
 
         original, modified = transform_changes(case method
